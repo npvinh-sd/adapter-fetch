@@ -163,6 +163,10 @@ export default {
     const res = Object.assign({}, from, to)
     if (to.url !== undefined && from.url !== undefined) {
       res.url = to.url[0] === '/' ? to.url : [from.url, to.url].join('/')
+      
+      if (res.url.length > 0 && res.url[res.url.length - 1] === '/') {
+        res.url = res.url.substr(0, res.url.length - 1)
+      }
     }
     return res
   }
